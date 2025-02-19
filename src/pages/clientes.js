@@ -1,8 +1,12 @@
 
 import Layout from "@/components/Layout";
 import React from 'react'
+import {gql, useQuery} from '@apollo/client'
+
 
 export default function pedidos() {
+   
+    
     return (
         <div>
 

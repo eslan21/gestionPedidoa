@@ -6,9 +6,7 @@ export default function Document() {
     <Html lang="en">
       
         <Head>
-          <title>
-            CRM-Administracion de Clientes
-          </title>
+          
         </Head>
       <body >
         <Main />
