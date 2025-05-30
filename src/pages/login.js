@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
 import { useFormik } from 'formik'
@@ -23,6 +23,15 @@ export default function login() {
     const [autenticarUsuario] = useMutation(AUTENTICAS_USUARIO );
 //useState de mensajes 
     const [mensaje, guardarMensaje] = useState(null);
+    
+
+useEffect(()=>{
+
+    if(localStorage.getItem('token')){
+        return router.push('/')
+    }
+    
+},[])
 
 //configurando formik
     const formik = useFormik({
@@ -49,10 +58,12 @@ export default function login() {
                 //*****guardar token en localStorage
                    
                     guardarMensaje('Autenticando..')
-
                     const {token} = await data.autenticarUsuario  //destructurando token
+                setTimeout(() => {
+                    
+                    localStorage.setItem('token',token)  //guardando en Storage
+                }, 1000);
 
-                     localStorage.setItem('token',token)  //guardando en Storage
 
                 //****redireccionar hacia cliente
                  setTimeout(()=>{ //desaparece al 3 segundos

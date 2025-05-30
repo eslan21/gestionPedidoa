@@ -2,7 +2,7 @@ import React from 'react'
 import { gql, useQuery} from '@apollo/client'
 import { useRouter } from 'next/router'
 
-const OBTENER_CLIENTE = gql`
+const OBTENER_USUARIO = gql`
     query obtenerUsuario {
         obtenerUsuario {
           nombre
@@ -14,7 +14,7 @@ const OBTENER_CLIENTE = gql`
 export default function Header() {
 
     const router = useRouter();
-    const {data,loading , error } = useQuery(OBTENER_CLIENTE)
+    const {data,loading , error } = useQuery(OBTENER_USUARIO)
 
     //Asegurando carga de datos
     if ( loading) return null
@@ -27,7 +27,7 @@ export default function Header() {
     };
     
   return (
-    <div className='flex justify-between mb-4'>
+    <div className='sm:flex justify-between mb-4'>
 
         <p className='mr-2'>Hola: {data.obtenerUsuario.nombre}</p>
         <button 

@@ -46,7 +46,7 @@ export default function nuevoCliente() {
         update(cache, {data:{nuevoCliente}}){                     //updato (que hacemos) cache(donde lo hacemos) nuevoCliente(de donde viene la informacion)   
             //Obtenemos objeto cache que deseamso modificar
             const data = cache.readQuery({query: OBTENER_CLIENTES_USUARIO})
-            const obtenerVendedorClientes = data.obtenerVendedorClientes || [];  //Aseguramos no tener errores si el cache esta vacio
+            const obtenerVendedorClientes = data?.obtenerVendedorClientes || [];  //Aseguramos no tener errores si el cache esta vacio
             //Reescribimos cache
                 cache.writeQuery({
                     query: OBTENER_CLIENTES_USUARIO,
